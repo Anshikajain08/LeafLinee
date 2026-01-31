@@ -6,13 +6,14 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
 // Register GSAP plugins
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 export default function AboutPage() {
-  const container = useRef<main>(null);
+  const container = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
@@ -83,23 +84,23 @@ export default function AboutPage() {
   );
 
   return (
-    <main ref={container} className="min-h-screen bg-richBlack text-stone overflow-hidden selection:bg-caribbeanGreen selection:text-richBlack">
+    <main ref={container} className="min-h-screen bg-[#FDFBD4] text-[#829c86] overflow-hidden selection:bg-caribbeanGreen selection:text-richBlack">
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
         
         {/* --- Section 1: Intro (Full Width) --- */}
         <section className="mb-32">
           <div>
-            <h1 className="main-title text-antiFlashWhite text-7xl md:text-9xl font-bold uppercase tracking-tighter mb-16">
+            <h1 className="main-title text-[#829c86] text-7xl md:text-9xl font-bold uppercase tracking-tighter mb-16">
               About Us.
             </h1>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg leading-relaxed text-stone">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg leading-relaxed text-[#829c86] font-axiforma">
               <p className="intro-text">
-                Studio Marani, communication agency based in Milan, has been created in <span className="text-antiFlashWhite font-bold">2011</span> from Maurizio Marani after his long term experience with the uberfamous McCann Erickson. Many of his clients, like L'Espresso Group and Radio Deejay, will follow him in this new adventure.
+                Delhi is a city full of energy, but it struggles daily with waste, pollution, and broken civic systems that leave citizens feeling unheard.
               </p>
               <p className="intro-text">
-                After a fortunate encounter with the copywriter Anna Scardovelli, Studio Marani gains another fundamental member. Collaborating with brands like <span className="text-caribbeanGreen hover:underline cursor-pointer">Barilla</span>, <span className="text-caribbeanGreen hover:underline cursor-pointer">Volkswagen</span>, and <span className="text-caribbeanGreen hover:underline cursor-pointer">Vodafone</span>, she is a TV / ADV author and founder of the firm.
+                LeafLine was created to change that. We believe every resident deserves a cleaner, smarter, and more sustainable city, one where reporting civic issues is simple, transparent, and accessible to all.
               </p>
             </div>
           </div>
@@ -109,7 +110,7 @@ export default function AboutPage() {
         {/* --- Section 2: Hero Image --- */}
         <section className="reveal-image w-full h-[60vh] relative mb-32 overflow-hidden rounded-sm bg-pine">
             <Image 
-                src="/Placeholder_about.jpg"
+                src="/About-1.jpeg"
                 alt="Team working"
                 fill
                 className="object-cover opacity-80 hover:scale-105 transition-transform duration-700 ease-out"
@@ -121,7 +122,7 @@ export default function AboutPage() {
         <section className="quote-section grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
             <div className="relative">
                 <span className="text-8xl text-basil absolute -top-10 -left-6 font-serif opacity-50">“</span>
-                <blockquote className="quote-text text-3xl md:text-4xl font-serif text-antiFlashWhite italic leading-snug mb-6 relative z-10">
+                <blockquote className="quote-text text-3xl md:text-4xl font-serif text-[#829c86] italic leading-snug mb-6 relative z-10">
                     Our work does make sense only if it is a faithful witness of his time.
                 </blockquote>
                 <cite className="quote-text not-italic text-mountainMeadow font-medium block">
@@ -132,7 +133,7 @@ export default function AboutPage() {
             
             <div className="reveal-image relative h-[400px] bg-pine">
                 <Image 
-                    src="/Placeholder_about.jpg"
+                    src="/About-5.png"
                     alt="Man creating moodboard"
                     fill
                     className="object-cover opacity-90"
@@ -146,26 +147,26 @@ export default function AboutPage() {
             {/* Team Grid */}
             <div className="md:col-span-5 grid grid-cols-2 gap-4 h-fit">
                <div className="reveal-image relative h-48 md:h-64 bg-pine">
-                   <Image src="/Placeholder_about.jpg" alt="Team member" fill className="object-cover" />
+                   <Image src="/About-4.png" alt="Team member" fill className="object-contain"  />
                </div>
                <div className="reveal-image relative h-48 md:h-64 bg-pine translate-y-12">
-                   <Image src="/Placeholder_about.jpg" alt="Team member" fill className="object-cover" />
+                   <Image src="/About-3.png" alt="Team member" fill className="object-contain" />
                </div>
                <div className="reveal-image relative h-48 md:h-64 bg-pine col-span-2 mt-12">
-                   <Image src="/Placeholder_about.jpg" alt="Team member" fill className="object-cover" />
+                   <Image src="/About-2.jpeg" alt="Team member" fill className="object-contain" />
                </div>
             </div>
 
             {/* Team Text & Stats */}
             <div className="md:col-span-7 flex flex-col justify-between">
                 <div>
-                    <h2 className="reveal-image text-antiFlashWhite text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-10">
+                    <h2 className="reveal-image text-[#829c86] text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-10">
                         The Team.
                     </h2>
-                    <p className="reveal-image text-lg text-stone mb-6 max-w-xl">
+                    <p className="reveal-image text-lg text-[#829c86] mb-6 max-w-xl">
                         All art is quite useless. One can never consent to creep when one feels an impulse to soar. Words do not express thoughts very well.
                     </p>
-                    <p className="reveal-image text-lg text-stone mb-16 max-w-xl">
+                    <p className="reveal-image text-lg text-[#829c86] mb-16 max-w-xl">
                         He had a word, too. Love, he called it. But I had been used to words for a long time. I knew that that word was like the other, just a shape to fill a lack.
                     </p>
                 </div>
@@ -173,25 +174,25 @@ export default function AboutPage() {
                 {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-basil pt-10">
                     <div className="stat-box">
-                        <div className="text-4xl font-bold text-antiFlashWhite mb-2">
+                        <div className="text-4xl font-bold text-[#829c86] mb-2">
                            <span className="stat-number" data-target="600">0</span>
                         </div>
                         <div className="text-xs uppercase tracking-wide text-pistachio">Million sq ft of sustainable work</div>
                     </div>
                     <div className="stat-box">
-                        <div className="text-4xl font-bold text-antiFlashWhite mb-2">
+                        <div className="text-4xl font-bold text-[#829c86] mb-2">
                             <span className="stat-number" data-target="700">0</span>
                         </div>
                         <div className="text-xs uppercase tracking-wide text-pistachio">Billion gallons of water saved</div>
                     </div>
                     <div className="stat-box">
-                        <div className="text-4xl font-bold text-antiFlashWhite mb-2">
+                        <div className="text-4xl font-bold text-[#829c86] mb-2">
                             <span className="stat-number" data-target="98">0</span>%
                         </div>
                         <div className="text-xs uppercase tracking-wide text-pistachio">Client Satisfaction Rate</div>
                     </div>
                     <div className="stat-box">
-                        <div className="text-4xl font-bold text-antiFlashWhite mb-2">
+                        <div className="text-4xl font-bold text-[#829c86] mb-2">
                             <span className="stat-number" data-target="110">0</span>
                         </div>
                         <div className="text-xs uppercase tracking-wide text-pistachio">USGBC Certified Projects</div>
