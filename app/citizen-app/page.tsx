@@ -5,13 +5,16 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { useRole } from '@/hooks/useRole'
 
+// Development backdoor - set to false in production
+const DEV_BACKDOOR = true
+
 export default function CitizenApp() {
   const router = useRouter()
   const { role, loading, user } = useRole()
   const [signingOut, setSigningOut] = useState(false)
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!DEV_BACKDOOR && !loading && !user) {
       router.push('/login')
     }
   }, [loading, user, router])
@@ -27,7 +30,7 @@ export default function CitizenApp() {
     }
   }
 
-  if (loading) {
+  if (!DEV_BACKDOOR && loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
@@ -38,7 +41,7 @@ export default function CitizenApp() {
     )
   }
 
-  if (!user) return null
+  if (!DEV_BACKDOOR && !user) return null
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -49,9 +52,9 @@ export default function CitizenApp() {
               <h1 className="text-xl font-bold text-gray-900">Citizen App</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
+              <span className="text-sm text-gray-600">{user?.email || 'Dev Mode'}</span>
               <span className="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">
-                {role === 'citizen' ? 'Citizen' : 'User'}
+                {DEV_BACKDOOR && !user ? 'Dev Access' : role === 'citizen' ? 'Citizen' : 'User'}
               </span>
               <button
                 onClick={handleSignOut}

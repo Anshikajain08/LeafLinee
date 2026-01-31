@@ -91,6 +91,20 @@ export default function LoginPage() {
               </>
             )}
           </button>
+
+          <button
+            onClick={() => router.push('/citizen-app')}
+            className="flex items-center justify-center w-full px-4 py-3 space-x-3 text-gray-700 transition-all duration-200 bg-gray-100 border-2 border-gray-300 rounded-lg hover:bg-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            <span className="font-medium">Open Citizen Folder</span>
+          </button>
+
+          <button
+            onClick={() => router.push('/authority-dashboard')}
+            className="flex items-center justify-center w-full px-4 py-3 space-x-3 text-gray-700 transition-all duration-200 bg-gray-100 border-2 border-gray-300 rounded-lg hover:bg-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            <span className="font-medium">Authority</span>
+          </button>
         </div>
 
         <div className="pt-4 text-center border-t border-gray-200">
