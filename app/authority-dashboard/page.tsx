@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { useRole } from '@/hooks/useRole'
 import Header from '@/components/Header'
+// Development backdoor - set to false in production
+const DEV_BACKDOOR = true
 
 export default function AuthorityDashboard() {
   const router = useRouter()
@@ -50,9 +52,10 @@ export default function AuthorityDashboard() {
       <Header />
       <div className="min-h-screen bg-gray-50 pt-24">
         <div className="absolute top-24 right-8 flex items-center space-x-4">
-          <span className="text-sm text-gray-600">{user.email}</span>
+          <span className="text-sm text-gray-600">{user?.email||'Dev Mode'}</span>
           <span className="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-full">
             Admin
+            {DEV_BACKDOOR && !user ? 'Dev Access' : 'Admin'}
           </span>
           <button
             onClick={handleSignOut}
