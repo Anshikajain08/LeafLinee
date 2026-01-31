@@ -45,7 +45,7 @@ export default function Header() {
         LeafLine<span className="text-[#000000]">.</span>
       </Link>
       
-      <nav className="flex gap-8 font-medium">
+      <nav className="flex gap-8 font-medium items-center">
         {['About', 'Work', 'Experience', 'Contact'].map((item) => (
           <Link 
             key={item} 
@@ -55,6 +55,12 @@ export default function Header() {
             {item}
           </Link>
         ))}
+        <Link 
+          href="/login"
+          className="px-6 py-3 bg-[#829c86] text-[#FDFBD4] rounded-lg font-medium hover:bg-[#6d8371] transition-colors duration-200"
+        >
+          Login
+        </Link>
       </nav>
     </header>
   );
