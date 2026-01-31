@@ -123,10 +123,11 @@ export default function AboutPage() {
             <div className="relative">
                 <span className="text-8xl text-basil absolute -top-10 -left-6 font-serif opacity-50">“</span>
                 <blockquote className="quote-text text-3xl md:text-4xl font-serif text-[#829c86] italic leading-snug mb-6 relative z-10">
-                    Our work does make sense only if it is a faithful witness of his time.
+                    "There is no such thing as 'away.' When we throw anything away, it must go somewhere."
                 </blockquote>
                 <cite className="quote-text not-italic text-mountainMeadow font-medium block">
-                    — Jean-Philippe Nuel, Director
+                   -- Annie Leonard
+
                 </cite>
                 <span className="text-8xl text-basil absolute -bottom-16 right-10 font-serif opacity-50">”</span>
             </div>
@@ -164,10 +165,11 @@ export default function AboutPage() {
                         The Team.
                     </h2>
                     <p className="reveal-image text-lg text-[#829c86] mb-6 max-w-xl">
-                        All art is quite useless. One can never consent to creep when one feels an impulse to soar. Words do not express thoughts very well.
+                       The name CLOVER is our identity as a team of four — like a four‑leaf clover, rare and lucky, something people are always searching for with hope. It reflects resilience and community, thriving even in tough conditions. 
+
                     </p>
                     <p className="reveal-image text-lg text-[#829c86] mb-16 max-w-xl">
-                        He had a word, too. Love, he called it. But I had been used to words for a long time. I knew that that word was like the other, just a shape to fill a lack.
+                        That’s what we believe Delhi can be: a city that flourishes when citizens and systems work together, with CLOVER as that rare solution people have been waiting to find
                     </p>
                 </div>
 
