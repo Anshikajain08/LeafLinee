@@ -35,15 +35,15 @@ export default function Header() {
       ref={container} 
       className="fixed top-0 w-full h-24 flex items-center justify-between px-12 z-50 text-anti-flash-white font-axiforma transition-all duration-300"
     >
-      <div className="logo text-2xl font-bold tracking-tighter text-caribbean-green">
-        SHREY<span className="text-anti-flash-white">.</span>
-      </div>
+      <Link href="/" className="logo text-2xl font-bold tracking-tighter text-caribbean-green">
+        LeafLine<span className="text-anti-flash-white">.</span>
+      </Link>
       
       <nav className="flex gap-8 font-medium">
         {['About', 'Work', 'Experience', 'Contact'].map((item) => (
           <Link 
             key={item} 
-            href={`#${item.toLowerCase()}`} 
+            href={`${item.toLowerCase()}`} 
             className="nav-item hover:text-caribbean-green transition-colors duration-200"
           >
             {item}
