@@ -36,7 +36,7 @@ const LoginToggle = () => {
     const successTl = gsap.timeline({
       onComplete: () => {
         // 2. Redirect after animation completes
-        router.push("/dashboard"); 
+        router.push("/login"); 
       }
     });
 
