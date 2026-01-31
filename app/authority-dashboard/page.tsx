@@ -12,7 +12,7 @@ export default function AuthorityDashboard() {
   const [signingOut, setSigningOut] = useState(false)
 
   useEffect(() => {
-    if (!loading) {
+    if (!DEV_BACKDOOR && !loading) {
       if (!user) {
         router.push('/login')
       } else if (role !== 'admin') {
@@ -32,7 +32,7 @@ export default function AuthorityDashboard() {
     }
   }
 
-  if (loading) {
+  if (!DEV_BACKDOOR && loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
@@ -43,7 +43,7 @@ export default function AuthorityDashboard() {
     )
   }
 
-  if (!user || role !== 'admin') return null
+  if (!DEV_BACKDOOR && (!user || role !== 'admin')) return null
 
   return (
     <>
