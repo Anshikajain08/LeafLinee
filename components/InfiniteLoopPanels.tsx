@@ -1,5 +1,6 @@
 "use client";
 import React, { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -42,9 +43,9 @@ const StackedSections = () => {
   }, []);
 
   const sections = [
-    { title: "The Foundation", color: "bg-rich-black", text: "text-anti-flash", border: "border-bangladesh-green" },
-    { title: "The Growth", color: "bg-dark-green", text: "text-mountain-meadow", border: "border-caribbean-green" },
-    { title: "The Peak", color: "bg-bangladesh-green", text: "text-caribbean-green", border: "border-anti-flash" },
+    { title: "The Foundation", color: "bg-rich-black", text: "text-anti-flash", border: "border-bangladesh-green", image: "/homepage-3.png" },
+    { title: "The Growth", color: "bg-dark-green", text: "text-mountain-meadow", border: "border-caribbean-green", image: "/homepage-2.png" },
+    { title: "The Peak", color: "bg-bangladesh-green", text: "text-caribbean-green", border: "border-anti-flash", image: "/homepage-1.png" },
   ];
 
   return (
@@ -55,7 +56,15 @@ const StackedSections = () => {
           className={`panel h-screen w-full flex items-center justify-center border-b ${section.color} ${section.border}`}
           style={{ zIndex: index, position: "relative" }}
         >
-          <div className="panel-content text-center px-10">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={section.image}
+              alt={section.title}
+              fill
+              className="object-cover opacity-70"
+            />
+          </div>
+          <div className="panel-content text-center px-10 relative z-10">
             <h1 className={`text-6xl md:text-8xl font-bold mb-4 ${section.text}`}>
               {section.title}
             </h1>

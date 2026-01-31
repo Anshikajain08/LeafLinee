@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import Header from '@/components/Header'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -41,8 +42,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-2xl">
+    <>
+      <Header />
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-2xl">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
           <p className="mt-2 text-sm text-gray-600">
@@ -99,6 +102,7 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

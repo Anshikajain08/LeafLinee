@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { useRole } from '@/hooks/useRole'
+import Header from '@/components/Header'
 
 export default function AuthorityDashboard() {
   const router = useRouter()
@@ -45,29 +46,22 @@ export default function AuthorityDashboard() {
   if (!user || role !== 'admin') return null
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-bold text-gray-900">Authority Dashboard</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
-              <span className="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-full">
-                Admin
-              </span>
-              <button
-                onClick={handleSignOut}
-                disabled={signingOut}
-                className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                {signingOut ? 'Signing out...' : 'Sign Out'}
-              </button>
-            </div>
-          </div>
+    <>
+      <Header />
+      <div className="min-h-screen bg-gray-50 pt-24">
+        <div className="absolute top-24 right-8 flex items-center space-x-4">
+          <span className="text-sm text-gray-600">{user.email}</span>
+          <span className="px-3 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-full">
+            Admin
+          </span>
+          <button
+            onClick={handleSignOut}
+            disabled={signingOut}
+            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          >
+            {signingOut ? 'Signing out...' : 'Sign Out'}
+          </button>
         </div>
-      </nav>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
@@ -82,5 +76,6 @@ export default function AuthorityDashboard() {
         </div>
       </main>
     </div>
+    </>
   )
 }

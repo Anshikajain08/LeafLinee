@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import PinnedHorizontalScroll from "@/components/InfiniteLoopPanels";
 import ParallaxImage from "@/components/ParallaxImage";
 
@@ -5,7 +6,8 @@ import ParallaxImage from "@/components/ParallaxImage";
 export default function Home() {
   return (
     <>
-      <ParallaxImage src={"/About-1.jpeg"} alt={"Hero Image"}/>
+      <Header />
+      <ParallaxImage src={"/Homepage-0.jpeg"} alt={"Hero Image"}/>
       <PinnedHorizontalScroll />
     </>
   )

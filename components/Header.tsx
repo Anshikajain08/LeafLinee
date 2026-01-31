@@ -4,6 +4,7 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LoginToggle from './Loginbutton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,8 +46,8 @@ export default function Header() {
         LeafLine<span className="text-[#000000]">.</span>
       </Link>
       
-      <nav className="flex gap-8 font-medium">
-        {['About', 'Work', 'Experience', 'Contact'].map((item) => (
+      <nav className="flex gap-8 font-medium items-center">
+        {['About', 'Work', 'Experience'].map((item) => (
           <Link 
             key={item} 
             href={`${item.toLowerCase()}`} 
@@ -55,6 +56,9 @@ export default function Header() {
             {item}
           </Link>
         ))}
+        <div className="nav-item scale-[0.35] origin-right -ml-24">
+          <LoginToggle />
+        </div>
       </nav>
     </header>
   );

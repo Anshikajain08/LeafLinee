@@ -38,7 +38,7 @@ export default function ParallaxImage({ src, alt }: ParallaxImageProps) {
   return (
     <section
       ref={container}
-      className="w-full h-[60vh] relative mb-32 overflow-hidden rounded-sm bg-pine"
+      className="w-full h-[60vh] relative overflow-hidden rounded-sm bg-pine"
     >
       <Image
         src={src}

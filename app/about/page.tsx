@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Header from "@/components/Header";
 
 
 // Register GSAP plugins
@@ -84,7 +85,9 @@ export default function AboutPage() {
   );
 
   return (
-    <main ref={container} className="min-h-screen bg-[#FDFBD4] text-[#829c86] overflow-hidden selection:bg-caribbeanGreen selection:text-richBlack">
+    <>
+      <Header />
+      <main ref={container} className="min-h-screen bg-[#FDFBD4] text-[#829c86] overflow-hidden selection:bg-caribbeanGreen selection:text-richBlack">
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
         
@@ -205,5 +208,6 @@ export default function AboutPage() {
 
       </div>
     </main>
+    </>
   );
 }
