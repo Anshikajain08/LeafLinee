@@ -17,10 +17,7 @@ export default function Header() {
       .from(".nav-item", { y: 20, opacity: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" }, "-=0.4");
 
     // 2. Scroll Effect: Header darkens and shrinks
-    gsap.to(container.current, {
-      backgroundColor: "#032221", // Dark Green
-      height: "70px",
-      borderBottom: "1px solid #00DF81", // Caribbean Green accent
+    const scrollTl = gsap.timeline({
       scrollTrigger: {
         trigger: "body",
         start: "top -10%",
@@ -28,6 +25,15 @@ export default function Header() {
         scrub: true,
       },
     });
+
+    scrollTl.to(container.current, {
+      backgroundColor: "#032221", // Dark Green
+      height: "70px",
+      borderBottom: "1px solid #00DF81", // Caribbean Green accent
+    })
+    .to(".logo", {
+      color: "#00DF81", // Caribbean Green
+    }, "<");
   }, { scope: container });
 
   return (
@@ -35,8 +41,8 @@ export default function Header() {
       ref={container} 
       className="fixed top-0 w-full h-24 flex items-center justify-between px-12 z-50 text-anti-flash-white font-axiforma transition-all duration-300"
     >
-      <Link href="/" className="logo text-2xl font-bold tracking-tighter text-caribbean-green">
-        LeafLine<span className="text-anti-flash-white">.</span>
+      <Link href="/" className="logo text-2xl font-bold tracking-tighter text-black">
+        LeafLine<span className="text-[#000000]">.</span>
       </Link>
       
       <nav className="flex gap-8 font-medium">
