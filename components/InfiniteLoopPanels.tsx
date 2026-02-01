@@ -6,7 +6,43 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const StackedSections = () => {
+export interface PanelData {
+  title: string;
+  bgColor: string;
+  textColor: string;
+  borderColor: string;
+  image: string;
+  description: string;
+}
+
+const defaultPanels: PanelData[] = [
+  { 
+    title: "The Foundation", 
+    bgColor: "bg-rich-black", 
+    textColor: "text-anti-flash", 
+    borderColor: "border-bangladesh-green", 
+    image: "/homepage-3.png",
+    description: "Custom component for your portfolio using the Axiforma style."
+  },
+  { 
+    title: "The Growth", 
+    bgColor: "bg-dark-green", 
+    textColor: "text-mountain-meadow", 
+    borderColor: "border-caribbean-green", 
+    image: "/homepage-2.png",
+    description: "Custom component for your portfolio using the Axiforma style."
+  },
+  { 
+    title: "The Peak", 
+    bgColor: "bg-bangladesh-green", 
+    textColor: "text-caribbean-green", 
+    borderColor: "border-anti-flash", 
+    image: "/homepage-1.png",
+    description: "Custom component for your portfolio using the Axiforma style."
+  },
+];
+
+const StackedSections = ({ panels = defaultPanels }: { panels?: PanelData[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -42,18 +78,12 @@ const StackedSections = () => {
     return () => context.revert();
   }, []);
 
-  const sections = [
-    { title: "The Foundation", color: "bg-rich-black", text: "text-anti-flash", border: "border-bangladesh-green", image: "/homepage-3.png" },
-    { title: "The Growth", color: "bg-dark-green", text: "text-mountain-meadow", border: "border-caribbean-green", image: "/homepage-2.png" },
-    { title: "The Peak", color: "bg-bangladesh-green", text: "text-caribbean-green", border: "border-anti-flash", image: "/homepage-1.png" },
-  ];
-
   return (
     <main ref={containerRef} className="bg-rich-black">
-      {sections.map((section, index) => (
+      {panels.map((section, index) => (
         <section
           key={index}
-          className={`panel h-screen w-full flex items-center justify-center border-b ${section.color} ${section.border}`}
+          className={`panel h-screen w-full flex items-center justify-center border-b ${section.bgColor} ${section.borderColor}`}
           style={{ zIndex: index, position: "relative" }}
         >
           <div className="absolute inset-0 z-0">
@@ -65,12 +95,12 @@ const StackedSections = () => {
             />
           </div>
           <div className="panel-content text-center px-10 relative z-10">
-            <h1 className={`text-6xl md:text-8xl font-bold mb-4 ${section.text}`}>
+            <h1 className={`text-6xl md:text-8xl font-bold mb-4 ${section.textColor}`}>
               {section.title}
             </h1>
             <div className={`h-1 w-24 mx-auto bg-caribbean-green`} />
             <p className="mt-8 text-anti-flash/70 max-w-md mx-auto">
-              Custom component for your portfolio using the Axiforma style.
+              {section.description}
             </p>
           </div>
         </section>
