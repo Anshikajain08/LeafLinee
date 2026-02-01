@@ -8,7 +8,19 @@ import LoginToggle from './Loginbutton';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Header() {
+export interface HeaderProps {
+  initialLogoColor?: string;
+  initialTextColor?: string;
+  scrolledBgColor?: string;
+  scrolledAccentColor?: string;
+}
+
+export default function Header({
+  initialLogoColor = "#000000",
+  initialTextColor = "#F0F1F0",
+  scrolledBgColor = "#032221",
+  scrolledAccentColor = "#00DF81"
+}: HeaderProps) {
   const container = useRef(null);
 
   useGSAP(() => {
@@ -28,24 +40,25 @@ export default function Header() {
     });
 
     scrollTl.to(container.current, {
-      backgroundColor: "#032221", // Dark Green
+      backgroundColor: scrolledBgColor,
       height: "70px",
-      borderBottom: "1px solid #00DF81", // Caribbean Green accent
+      borderBottom: `1px solid ${scrolledAccentColor}`,
     })
     .to(".logo", {
-      color: "#00DF81", // Caribbean Green
+      color: scrolledAccentColor,
     }, "<");
-  }, { scope: container });
+  }, { scope: container, dependencies: [scrolledBgColor, scrolledAccentColor] });
 
   return (
     <header 
       ref={container} 
-      className="fixed top-0 w-full h-24 flex items-center justify-between px-12 z-50 text-anti-flash-white font-axiforma transition-all duration-300"
+      className="fixed top-0 w-full h-24 flex items-center justify-between px-12 z-50 font-axiforma transition-all duration-300"
+      style={{ color: initialTextColor }}
     >
-      <Link href="/" className="logo text-2xl font-bold tracking-tighter text-black">
-        LeafLine<span className="text-[#000000]">.</span>
+      <Link href="/" className="logo text-2xl font-bold tracking-tighter" style={{ color: initialLogoColor }}>
+        LeafLine.
       </Link>
-      
+
       <nav className="flex gap-8 font-medium items-center">
         {['About', 'Work', 'Experience'].map((item) => (
           <Link 
