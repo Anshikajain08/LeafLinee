@@ -84,7 +84,14 @@ export default function LoginPage() {
     // Base background is Rich Black
     <div ref={containerRef} className="relative min-h-screen bg-[#000B01] overflow-hidden font-sans selection:bg-[#00CC99] selection:text-white">
       <div className="relative z-20">
-        <Header />
+        <Header 
+          initialLogoColor="#FFFFFF"
+          initialTextColor="#FFFFFF"
+          scrolledBgColor="#000B01"
+          scrolledAccentColor="#00CC99"
+          initialNavColor="#FFFFFF"
+          scrolledNavColor="#00CC99"
+         />
       </div>
 
       {/* --- Illustrative Background Layers --- */}

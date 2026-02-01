@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
 import { useRole } from '@/hooks/useRole'
 import Header from '@/components/Header'
 
@@ -13,24 +12,12 @@ const DEV_BACKDOOR = true
 export default function CitizenApp() {
   const router = useRouter()
   const { role, loading, user } = useRole()
-  const [signingOut, setSigningOut] = useState(false)
 
   useEffect(() => {
     if (!DEV_BACKDOOR && !loading && !user) {
       router.push('/login')
     }
   }, [loading, user, router])
-
-  const handleSignOut = async () => {
-    try {
-      setSigningOut(true)
-      await supabase.auth.signOut()
-      router.push('/login')
-    } catch (error) {
-      console.error('Error signing out:', error)
-      setSigningOut(false)
-    }
-  }
 
   if (!DEV_BACKDOOR && loading) {
     return (
@@ -50,17 +37,10 @@ export default function CitizenApp() {
       <Header />
       <div className="min-h-screen bg-[#FDFBD4] pt-24">
         <div className="absolute top-24 right-8 flex items-center space-x-4 z-10">
-          <span className="text-sm text-gray-600">{user?.email || 'Dev Mode'}</span>
+          <span className="text-sm text-gray-600">{user?.email}</span>
           <span className="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">
-            {DEV_BACKDOOR && !user ? 'Dev Access' : role === 'citizen' ? 'Citizen' : 'User'}
+            {role === 'citizen' ? 'Citizen' : 'User'}
           </span>
-          <button
-            onClick={handleSignOut}
-            disabled={signingOut}
-            className="px-4 py-2 text-sm font-medium text-white bg-[#829c86] rounded-lg hover:bg-[#6d8371] transition-colors disabled:opacity-50"
-          >
-            {signingOut ? 'Signing out...' : 'Sign Out'}
-          </button>
         </div>
 
         <main className="max-w-7xl mx-auto py-12 px-6">

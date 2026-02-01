@@ -13,15 +13,22 @@ export interface HeaderProps {
   initialTextColor?: string;
   scrolledBgColor?: string;
   scrolledAccentColor?: string;
+  initialNavColor?: string;
+  scrolledNavColor?: string;
 }
 
 export default function Header({
   initialLogoColor = "#000000",
-  initialTextColor = "#F0F1F0",
+  initialTextColor = "#000000",
   scrolledBgColor = "#032221",
-  scrolledAccentColor = "#00DF81"
+  scrolledAccentColor = "#00DF81",
+  initialNavColor = "#000000",
+  scrolledNavColor = "#FFFFFF"
 }: HeaderProps) {
   const container = useRef(null);
+
+  const navColorStart = initialNavColor || initialTextColor;
+  const navColorEnd = scrolledNavColor || navColorStart;
 
   useGSAP(() => {
     // 1. Entrance: Logo slides in, links stagger up
@@ -46,8 +53,11 @@ export default function Header({
     })
     .to(".logo", {
       color: scrolledAccentColor,
+    }, "<")
+    .to(".nav-item", {
+      color: navColorEnd,
     }, "<");
-  }, { scope: container, dependencies: [scrolledBgColor, scrolledAccentColor] });
+  }, { scope: container, dependencies: [scrolledBgColor, scrolledAccentColor, navColorEnd] });
 
   return (
     <header 
@@ -60,10 +70,11 @@ export default function Header({
       </Link>
 
       <nav className="flex gap-8 font-medium items-center">
-        {['About', 'Work', 'Experience'].map((item) => (
+        {['About', 'Contact'].map((item) => (
           <Link 
             key={item} 
             href={`${item.toLowerCase()}`} 
+            style={{ color: navColorStart }}
             className="nav-item hover:text-caribbean-green transition-colors duration-200"
           >
             {item}
